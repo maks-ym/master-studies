@@ -3,10 +3,8 @@
 
 using namespace std;
 
-class List
-{
-    struct Node
-    {
+class List {
+    struct Node {
         int number;
         char letter;
         Node* nextNumber;
@@ -27,19 +25,16 @@ public:
     Node* findPrevLetter(char);
 };
 
-List::List()
-{
+List::List() {
     headNumber = 0;
     headLetter = 0;
     cout << "List created" << endl;
 }
 
-List::~List()
-{
+List::~List() {
     if(isEmpty()) return;
     Node *tmp = headNumber->nextNumber;
-    while(!tmp == 0)
-    {
+    while(!tmp == 0)     {
          delete headNumber;
          headNumber = tmp;
          tmp = tmp->nextNumber;
@@ -49,36 +44,29 @@ List::~List()
     cout << "List deleted." << endl;
 }
 
-void List::addItem(int userNumber, char userLetter)
-{
+void List::addItem(int userNumber, char userLetter) {
     Node* item = new Node(userNumber, userLetter);
-    if(isEmpty())
-    {
+    if(isEmpty())     {
         item->nextNumber = NULL;
         item->nextLetter = NULL;
         headNumber = item;
         headLetter = item;
     }
-    else
-    {
-        if(userNumber < headNumber->number)
-        {
+    else {
+        if(userNumber < headNumber->number) {
             item->nextNumber = headNumber;
             headNumber = item;
         }
-        else
-        {
+        else {
             Node* prevNum = findPrevNumber(userNumber);
             item->nextNumber = prevNum->nextNumber;
             prevNum->nextNumber = item;
         }
-        if(userLetter < headLetter->letter)
-        {
+        if(userLetter < headLetter->letter) {
             item->nextLetter = headLetter;
             headLetter = item;
         }
-        else
-        {
+        else {
             Node* prevLetter = findPrevLetter(userLetter);
             item->nextLetter = prevLetter->nextLetter;
             prevLetter->nextLetter = item;
@@ -86,73 +74,61 @@ void List::addItem(int userNumber, char userLetter)
     }
 }
 
-List::Node* List::findPrevNumber(int key)
-{
+List::Node* List::findPrevNumber(int key) {
     Node* current = headNumber;
     if(key < current->number) return headNumber;
-    while(!(current->nextNumber == 0))
-    {
-        if((current->number <= key && current->nextNumber->number > key) || current->nextNumber == 0) break;
+    while(!(current->nextNumber == 0)) {
+        if((current->number <= key && current->nextNumber->number > key) || current->nextNumber == 0){
+            break;
+        }
         current = current->nextNumber;
     }
     return current;
 }
 
-List::Node* List::findPrevLetter(char key)
-{
+List::Node* List::findPrevLetter(char key) {
     Node* current = headLetter;
     if(key < current->letter) return headLetter;
-    while(!(current->nextLetter == 0))
-    {
+    while(!(current->nextLetter == 0))     {
         if((current->letter <= key && current->nextLetter->letter > key) || current->nextLetter == 0) break;
         current = current->nextLetter;
     }
     return current;
 }
 
-bool List::isEmpty()
-{
+bool List::isEmpty() {
     return (headNumber == 0 && headLetter == 0);
 }
 
-void List::showListByNumbers()
-{
-    if (isEmpty())
-    {
+void List::showListByNumbers() {
+    if (isEmpty())     {
         cout << "List is empty!" << endl;
     }
-    else
-    {
+    else     {
         cout << "[num, let]\taddress \tnext number\tnext letter"<< endl;
         cout << "-----------------------------------------------------------"<< endl;
-        for(Node *tmp = headNumber; tmp != 0; tmp = tmp->nextNumber)
-        {
+        for(Node *tmp = headNumber; tmp != 0; tmp = tmp->nextNumber) {
             cout << "[" << tmp->number << "\t"<< tmp->letter << "]\t" << tmp << "\t" << tmp->nextNumber << "\t" << tmp->nextLetter <<  endl;
         }
         cout << "==========================================================="<< endl;
     }
 }
 
-void List::showListByLetters()
-{
-    if (isEmpty())
-    {
+void List::showListByLetters() {
+    if (isEmpty()) {
         cout << "List is empty!" << endl;
     }
-    else
-    {
+    else {
         cout << "[let, num];\taddress \tnext letter\tnext number"<< endl;
         cout << "-----------------------------------------------------------"<< endl;
-        for(Node *tmp = headLetter; tmp != 0; tmp = tmp->nextLetter)
-        {
+        for(Node *tmp = headLetter; tmp != 0; tmp = tmp->nextLetter) {
             cout << "[" << tmp->letter << "\t"<< tmp->number << "]\t" << tmp << "\t" << tmp->nextLetter << "\t" << tmp->nextNumber << endl;
         }
         cout << "==========================================================="<< endl;
     }
 }
 
-int main()
-{
+int main() {
     List* my_list = new List;
     my_list->addItem(5, 'a');
     my_list->addItem(3, 'b');
