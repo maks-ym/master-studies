@@ -1,0 +1,6 @@
+/.vs
+/Debug
+*.cd
+*.filters
+!.gitignore
+
