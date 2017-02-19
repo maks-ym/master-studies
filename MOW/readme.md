@@ -11,4 +11,4 @@ Implementation of k-nearest neighbours algorithm for filtering SMS.
 
 - _knn.R_ - implementation of algorithm
 - _SMSSpamCollection_ - set of data to train and test model
-- _report.docx_ - documentation in polish
+- _report.docx_ - report in polish
