@@ -1,6 +1,6 @@
 /.vs
 /Debug
-/**/Resease
+/Resease
 *.cd
 *.db
 *.filters
