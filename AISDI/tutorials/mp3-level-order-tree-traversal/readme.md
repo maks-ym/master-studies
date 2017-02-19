@@ -7,11 +7,13 @@ Create the function to traverse tree by levels.
 
 For the tree:
 
-`   3`
-`   /  \`
-`  2    4`
-` / \  / \`
-`1   6 7  9`
+|   |   |   |   |   |   |   |
+|---|---|---|---|---|---|---|
+|   |   |   | 3 |   |   |   |
+|   |   | / |   |\\ |   |   |
+|   | 2 |   |   |   | 4 |   |
+| / |   |\\ |   | / |   | \\|
+| 1 |   | 6 |   | 7 |   | 9 |
 
 Result should be:
 
