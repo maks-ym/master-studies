@@ -1,0 +1,10 @@
+/.vs
+**/Debug
+**/Resease
+**/x64
+*.cd
+*.db
+*.filters
+*.opendb
+!.gitignore
+
