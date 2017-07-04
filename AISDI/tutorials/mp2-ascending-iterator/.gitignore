@@ -1,7 +1,0 @@
-/.vs
-/Debug
-*.cd
-*.db
-*.filters
-!.gitignore
-

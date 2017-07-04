@@ -1,0 +1,268 @@
+=====================================================================
+Author: Maksym Bakhmut
+StudentID: 288133
+Subject: EOPSY
+Task: Lab 4 - Memory Management
+=====================================================================
+Task description:
+
+Create a command file that maps any 8 pages of physical memory to the
+first 8 pages of virtual memory, and then reads from one virtual memory
+address on each of the 64 virtual pages. Step through the simulator one
+operation at a time and see if you can predict which virtual memory
+addresses cause page faults. What page replacement algorithm is being
+used?
+
+Locate in the sources and describe to the instructor the page 
+replacement algorithm.
+
+=====================================================================
+Description of research:
+
+The goal of the laboratory task was to get familiar with one of the
+page replacing algoryithms. We had to configure and run the simulator
+of page replacing process. According to our observations we should
+understand which algorithm is used in this simulator. To answer that 
+questions it's necessary to know what is paging, what page replacing
+algorythms are known and used and how we'll carry out our experiment.
+
+Paging is the memory management scheme by which a computer stores and retrieves data from secondary storage for use in main memory. The 
+major reason for appearence of paging is the lack of RAM in real 
+world computers and necessety of running a lot of different processes
+concurrently.
+
+Page replacing algorithm is the way computer selects pages to remove
+from RAM to load the needed one from disk. There are several methods
+proposed and widely known: optimal, not recently used (NRU), first-in
+first-out (FIFO), the second chance, the least recently used (LRU), 
+not frequently used (NFU), WSClock. Optimal algorthm is imossible to
+implement by can be used to test other ones from the second run.
+
+For simulator we had to prepare 2 files with setting for it: 
+memory.conf and commands. Both of them are listed below.
+command file is used to tell simulator what type of action simulate
+and with which virtual page. Operations can be READ or WRITE. For our
+experiment we will try simply to write pages one by one.
+memory.conf is used to set the mapping of virtual and physical pages,
+enable/disable logging (needed to enable), the name of the logging
+file (my_tracefile), page size, the radix in which numerical values
+are displayed and number of pages (physical and virtual).
+
+The result of running the simulator was put into logfile 
+"my_tracefile" (listed below). In this file is the information
+whether operation was successful or fail.
+
+=====================================================================
+Conclusions:
+
+After conduction the experiment we can say that the algorithm used in
+the simulator is FIFO (first-in first-out) algorithm. It was not hard
+to understand because for different variants of page mapping in case
+when the virtual page wasn't paged to the physical one, action failed
+and algorithm removed the first virtual page used to map the failed
+page. In other words, the page which has been in the memory the
+longest is removed.
+
+=====================================================================
+File: memory.conf
+-----------------
+// memset  virt page #  physical page #  R (read from)  M (modified) inMemTime (ns) lastTouchTime (ns)
+memset 0 4 0 0 0 0      
+memset 1 6 0 0 0 0      
+memset 2 1 0 0 0 0      
+memset 3 0 0 0 0 0      
+memset 4 7 0 0 0 0      
+memset 5 2 0 0 0 0      
+memset 6 3 0 0 0 0      
+memset 7 5 0 0 0 0 
+// memset 8 8 0 0 0 0      
+// memset 9 9 0 0 0 0      
+// memset 10 10 0 0 0 0            
+// memset 11 11 0 0 0 0            
+// memset 12 12 0 0 0 0            
+// memset 13 13 0 0 0 0            
+// memset 14 14 0 0 0 0            
+// memset 15 15 0 0 0 0            
+// memset 16 16 0 0 0 0            
+// memset 17 17 0 0 0 0            
+// memset 18 18 0 0 0 0            
+// memset 19 19 0 0 0 0            
+// memset 20 20 0 0 0 0            
+// memset 21 21 0 0 0 0            
+// memset 22 22 0 0 0 0            
+// memset 23 23 0 0 0 0            
+// memset 24 24 0 0 0 0            
+// memset 25 25 0 0 0 0            
+// memset 26 26 0 0 0 0            
+// memset 27 27 0 0 0 0            
+// memset 28 28 0 0 0 0            
+// memset 29 29 0 0 0 0            
+// memset 30 30 0 0 0 0            
+// memset 31 31 0 0 0 0            
+
+//BUG: virt page and physical are reverted in this file and program 
+
+// enable_logging 'true' or 'false'
+// When true specify a log_file or leave blank for stdout
+enable_logging true
+
+// log_file <FILENAME>
+// Where <FILENAME> is the name of the file you want output
+// to be print to.
+log_file my_tracefile
+
+// page size, defaults to 2^14 and cannot be greater than 2^26
+// pagesize <single page size (base 10)> or <'power' num (base 2)>
+pagesize 16384
+
+// addressradix sets the radix in which numerical values are displayed
+// 2 is the default value
+// addressradix <radix>
+addressradix 16
+
+// numpages sets the number of pages (physical and virtual)
+// 64 is the default value
+// numpages must be at least 2 and no more than 64
+// numpages <num>
+numpages 64
+
+=====================================================================
+File: commands
+--------------
+// Enter READ/WRITE commands into this file
+// READ <OPTIONAL number type: bin/hex/oct> <virtual memory address or random>
+// WRITE <OPTIONAL number type: bin/hex/oct> <virtual memory address or random>
+
+WRITE 0
+WRITE 16384
+WRITE 32768
+WRITE 49152
+WRITE 65536
+WRITE 81920
+WRITE 98304
+WRITE 114688
+WRITE 131072
+WRITE 147456
+WRITE 163840
+WRITE 180224
+WRITE 196608
+WRITE 212992
+WRITE 229376
+WRITE 245760
+WRITE 262144
+WRITE 278528
+WRITE 294912
+WRITE 311296
+WRITE 327680
+WRITE 344064
+WRITE 360448
+WRITE 376832
+WRITE 393216
+WRITE 409600
+WRITE 425984
+WRITE 442368
+WRITE 458752
+WRITE 475136
+WRITE 491520
+WRITE 507904
+WRITE 524288
+WRITE 540672
+WRITE 557056
+WRITE 573440
+WRITE 589824
+WRITE 606208
+WRITE 622592
+WRITE 638976
+WRITE 655360
+WRITE 671744
+WRITE 688128
+WRITE 704512
+WRITE 720896
+WRITE 737280
+WRITE 753664
+WRITE 770048
+WRITE 786432
+WRITE 802816
+WRITE 819200
+WRITE 835584
+WRITE 851968
+WRITE 868352
+WRITE 884736
+WRITE 901120
+WRITE 917504
+WRITE 933888
+WRITE 950272
+WRITE 966656
+WRITE 983040
+WRITE 999424
+WRITE 1015808
+WRITE 1032192
+
+=====================================================================
+File: my_tracefile
+------------------
+WRITE 0 ... okay
+WRITE 4000 ... okay
+WRITE 8000 ... okay
+WRITE c000 ... okay
+WRITE 10000 ... okay
+WRITE 14000 ... okay
+WRITE 18000 ... okay
+WRITE 1c000 ... okay
+WRITE 20000 ... okay
+WRITE 24000 ... okay
+WRITE 28000 ... okay
+WRITE 2c000 ... okay
+WRITE 30000 ... okay
+WRITE 34000 ... okay
+WRITE 38000 ... okay
+WRITE 3c000 ... okay
+WRITE 40000 ... okay
+WRITE 44000 ... okay
+WRITE 48000 ... okay
+WRITE 4c000 ... okay
+WRITE 50000 ... okay
+WRITE 54000 ... okay
+WRITE 58000 ... okay
+WRITE 5c000 ... okay
+WRITE 60000 ... okay
+WRITE 64000 ... okay
+WRITE 68000 ... okay
+WRITE 6c000 ... okay
+WRITE 70000 ... okay
+WRITE 74000 ... okay
+WRITE 78000 ... okay
+WRITE 7c000 ... okay
+WRITE 80000 ... page fault
+WRITE 84000 ... page fault
+WRITE 88000 ... page fault
+WRITE 8c000 ... page fault
+WRITE 90000 ... page fault
+WRITE 94000 ... page fault
+WRITE 98000 ... page fault
+WRITE 9c000 ... page fault
+WRITE a0000 ... page fault
+WRITE a4000 ... page fault
+WRITE a8000 ... page fault
+WRITE ac000 ... page fault
+WRITE b0000 ... page fault
+WRITE b4000 ... page fault
+WRITE b8000 ... page fault
+WRITE bc000 ... page fault
+WRITE c0000 ... page fault
+WRITE c4000 ... page fault
+WRITE c8000 ... page fault
+WRITE cc000 ... page fault
+WRITE d0000 ... page fault
+WRITE d4000 ... page fault
+WRITE d8000 ... page fault
+WRITE dc000 ... page fault
+WRITE e0000 ... page fault
+WRITE e4000 ... page fault
+WRITE e8000 ... page fault
+WRITE ec000 ... page fault
+WRITE f0000 ... page fault
+WRITE f4000 ... page fault
+WRITE f8000 ... page fault
+WRITE fc000 ... page fault
+=====================================================================

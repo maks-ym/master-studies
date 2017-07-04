@@ -1,0 +1,140 @@
+#!/bin/bash
+#-----------------------------------------------------------
+# [AUTHOR] Maksym Bakhmut
+# [DESCRIPTION] bash program to change selected files and 
+#               directories name to upper or lower case
+# [Attention] Before firs use add directory with the script 
+# to your PATH. For this you should:
+# 1. Go to the directory with script
+# 2. ~$ PATH=$PATH:$PWD
+#
+# [NOTE] Commented echo's are for debugging
+#-----------------------------------------------------------
+
+recursive="0"
+pattern=
+list=()
+
+#-----------------------------------------------------------
+# echo "pattern: $pattern"
+# echo "list: $list"
+
+help() {
+  echo "usage: modify [[-r] -l | -u | sed '_pattern_' [<filename>]] | -h"
+  echo ""
+  echo "where:"
+  echo "	<filename>	list of files and directories to rename"
+  echo "			(* can be used)"
+  echo "	-h		show this help text"
+  echo "	-r		recursive"
+  echo "	-l		to lowercase"
+  echo "	-u		to UPPERCASE"
+  echo "	sed '_pattern_'	apply SED _pattern_ to <filename>
+    				for more info use 'sed -h'"
+  echo ""
+  echo "Special characters must be considered(e.g.: "''" or '""', files with spaces must be in quotes)"
+} # end of help
+
+if [ "$#" -eq "0" ]; then
+	echo "Parameters are needed"
+	echo help
+fi
+
+#read parameters until pattern is set
+#(means that all parameters are read)
+# echo "!@ before WHILE"
+while [ "$pattern" = "" ]; do
+
+# echo "--------current value: $1"
+# echo "!@ WHILE 1 - ITERATION"
+	case "$1" in
+		"-h"|"--help")
+# echo "!@ CASE 1 -H"
+			help
+			exit
+			;;
+		"-r")
+# echo "!@ CASE 1 -R"
+			recursive="1"
+			;;
+		"-u")
+# echo "!@ CASE 1 -U"
+			pattern="y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/"
+			# echo "!@ Pattern asigned:"
+			# echo ": $pattern"
+  			;;
+  		"-l" )
+# echo "!@ CASE 1 -L"
+			pattern="y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/"
+			# echo "!@ Pattern asigned:"
+			# echo ": $pattern"
+			;;
+		"sed")
+# echo "!@ CASE 1 SED"
+			shift
+			pattern="$1"
+			# echo "Pattern asigned: $pattern"
+			#shift
+			;;
+		*)
+			# echo "Error: Wrong or unknown parrameters"
+			# echo "Check parameters"
+			help
+			exit
+	esac
+	shift
+done
+
+count=0
+# echo "!@ list before WHILE2: $list"
+while [ "$1" != "" ]; do
+	# echo "!@ WHILE 2 - ITERATION: $1"
+	list=("${list[@]}" "$1")
+	shift
+done
+# echo "!@ END of WHILE2"
+# echo "!@ list after WHILE2: $list"
+
+# echo "!@ --list after :"
+# printf '%s\n' "${list[@]}"
+# printf '%s\n'
+
+#renema files in $list
+# echo "!@ files rename WHILE 3"
+
+count=0
+while [ "x${list[count]}" != "x" ]; do
+	filename="${list[count]}"
+	if [ -e "$filename" ] ; then
+		# echo "!@ pattern: $pattern"
+  		newFilename=$(echo $filename | sed "$pattern")
+  		# echo "!@ --- new filename: $newFilename"
+  		#ask on rewrite
+  		if [ "$filename" != "$newFilename" ]; then
+  			mv -i -- "$filename" "$newFilename"
+  			list[count]="$newFilename"
+  			# echo "!@ ---(changed) newfilename: $newFilename"
+  		fi
+  	else
+  		echo "Error: No such file: '$filename'"
+  	fi
+    count=$(( $count + 1 ))
+done
+
+# recursive mode
+if [ "$recursive" = "1" ]; then
+	count=0
+	while [ "x${list[count]}" != "x" ]; do
+		filename="${list[count]}"
+		if [ -d "$filename" ] ; then
+			$(cd "$filename")
+			if [ $? -eq 0 ]; then
+	  			$( modify -r sed "$pattern" "$filename" )
+	  			$( cd ".." )
+	  		fi
+	  	fi
+	    count=$(( $count + 1 ))
+	done
+fi
+
+exit 0

@@ -1,0 +1,64 @@
+WRITE 0 ... okay
+WRITE 4000 ... okay
+WRITE 8000 ... okay
+WRITE c000 ... okay
+WRITE 10000 ... okay
+WRITE 14000 ... okay
+WRITE 18000 ... okay
+WRITE 1c000 ... okay
+WRITE 20000 ... okay
+WRITE 24000 ... okay
+WRITE 28000 ... okay
+WRITE 2c000 ... okay
+WRITE 30000 ... okay
+WRITE 34000 ... okay
+WRITE 38000 ... okay
+WRITE 3c000 ... okay
+WRITE 40000 ... okay
+WRITE 44000 ... okay
+WRITE 48000 ... okay
+WRITE 4c000 ... okay
+WRITE 50000 ... okay
+WRITE 54000 ... okay
+WRITE 58000 ... okay
+WRITE 5c000 ... okay
+WRITE 60000 ... okay
+WRITE 64000 ... okay
+WRITE 68000 ... okay
+WRITE 6c000 ... okay
+WRITE 70000 ... okay
+WRITE 74000 ... okay
+WRITE 78000 ... okay
+WRITE 7c000 ... okay
+WRITE 80000 ... page fault
+WRITE 84000 ... page fault
+WRITE 88000 ... page fault
+WRITE 8c000 ... page fault
+WRITE 90000 ... page fault
+WRITE 94000 ... page fault
+WRITE 98000 ... page fault
+WRITE 9c000 ... page fault
+WRITE a0000 ... page fault
+WRITE a4000 ... page fault
+WRITE a8000 ... page fault
+WRITE ac000 ... page fault
+WRITE b0000 ... page fault
+WRITE b4000 ... page fault
+WRITE b8000 ... page fault
+WRITE bc000 ... page fault
+WRITE c0000 ... page fault
+WRITE c4000 ... page fault
+WRITE c8000 ... page fault
+WRITE cc000 ... page fault
+WRITE d0000 ... page fault
+WRITE d4000 ... page fault
+WRITE d8000 ... page fault
+WRITE dc000 ... page fault
+WRITE e0000 ... page fault
+WRITE e4000 ... page fault
+WRITE e8000 ... page fault
+WRITE ec000 ... page fault
+WRITE f0000 ... page fault
+WRITE f4000 ... page fault
+WRITE f8000 ... page fault
+WRITE fc000 ... page fault
