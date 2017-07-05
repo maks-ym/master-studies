@@ -1,6 +1,6 @@
-##AISIDI Labs
+## AISIDI Labs
 
-###Topics of labs:
+### Topics of labs:
 
 1. List & vector - STL-like containers
 2. Tree map & Hash map - STL-like containers
