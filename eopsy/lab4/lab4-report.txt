@@ -1,6 +1,5 @@
 =====================================================================
-Author: Maksym Bakhmut
-StudentID: 288133
+Author: maks-ym
 Subject: EOPSY
 Task: Lab 4 - Memory Management
 =====================================================================
@@ -26,7 +25,8 @@ understand which algorithm is used in this simulator. To answer that
 questions it's necessary to know what is paging, what page replacing
 algorythms are known and used and how we'll carry out our experiment.
 
-Paging is the memory management scheme by which a computer stores and retrieves data from secondary storage for use in main memory. The 
+Paging is the memory management scheme by which a computer stores and 
+retrieves data from secondary storage for use in main memory. The 
 major reason for appearence of paging is the lack of RAM in real 
 world computers and necessety of running a lot of different processes
 concurrently.

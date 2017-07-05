@@ -1,6 +1,6 @@
 /*
  * lab5 - Dinning Philosophers Problem.
- * Author: Maksym Bakhmut
+ * Author: maks-ym
 */
 #include <stdlib.h>
 #include <sys/wait.h>
@@ -99,7 +99,7 @@ void put_away_forks(int left_fork_id) {
 	int right_fork_id = left_fork_id-1;
 	if(right_fork_id<0)
 		right_fork_id=4; // In case of Plato.
-	printf("[Philo %d] throughs away his forks (%d left, %d right).\n", philosopher_id, left_fork_id, right_fork_id);
+	printf("[Philo %d] thoughs away his forks (%d left, %d right).\n", philosopher_id, left_fork_id, right_fork_id);
 	struct sembuf semaphore_as_a_fork[2] = {
 		{right_fork_id,1,0},
 		{left_fork_id,1,0}
@@ -140,16 +140,13 @@ void think() {
 			printf("[Philo %d] (thinking): If you spill cleaning product did you make a mess?\n", philosopher_id);
 			break;
 		case 2:
-			printf("[Philo %d] (thinking): If two mindreaders read eachothers minds whould they just be reading their own mind?\n", philosopher_id);
+			printf("[Philo %d] (thinking): If two mindreader read eachothers minds whould they just be reading their own mind?\n", philosopher_id);
 			break;
 		case 3:
 			printf("[Philo %d] (thinking): Is an argument between two vegans still called a 'beef'?\n", philosopher_id);
 			break;
 		case 4:
 			printf("[Philo %d] (thinking): At the movie theater which armrest is yours?\n", philosopher_id);
-			break;
-		default:
-			printf("[Some Philo] (thinking)...");
 			break;
 	}
 	sleep(THINKING_TIME);

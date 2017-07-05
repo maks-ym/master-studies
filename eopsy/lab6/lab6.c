@@ -1,7 +1,7 @@
 /** 
  *  EOPSY
  *  Lab 6 - copy program
- *  Author: Maksym Bakhmut
+ *  Author: maks-ym
  */
 
 #include <stdio.h>

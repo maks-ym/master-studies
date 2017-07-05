@@ -1,6 +1,6 @@
 #!/bin/bash
 #-----------------------------------------------------------
-# [AUTHOR] Maksym Bakhmut
+# [AUTHOR] maks-ym
 # [DESCRIPTION] bash program to change selected files and 
 #               directories name to upper or lower case
 # [Attention] Before firs use add directory with the script 
@@ -121,7 +121,7 @@ while [ "x${list[count]}" != "x" ]; do
     count=$(( $count + 1 ))
 done
 
-# recursive mode
+# recursive mode --- NOT WORKING (impossible to call the script out the same script)
 if [ "$recursive" = "1" ]; then
 	count=0
 	while [ "x${list[count]}" != "x" ]; do

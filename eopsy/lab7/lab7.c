@@ -1,6 +1,6 @@
 /*
  * lab7 - Dinning Philosophers Problem (pthread used)
- * Author: Maksym Bakhmut
+ * Author: maks-ym
 */
 
 /*
