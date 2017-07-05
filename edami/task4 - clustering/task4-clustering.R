@@ -1,4 +1,4 @@
-# author: Maksym Bakhmut
+# author: maks-ym
 # EDAMI lab7 2017L - clustering
 # 
 # The goal of the laboratory work is to determine the best grouping according

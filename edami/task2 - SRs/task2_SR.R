@@ -1,4 +1,4 @@
-# Author: Maksym Bakhmut
+# Author: maks-ym
 #
 # EDAMI lab3 2017L
 # 

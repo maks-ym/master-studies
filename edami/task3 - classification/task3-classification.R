@@ -1,4 +1,4 @@
-# Author: Maksym Bakhmut
+# Author: maks-ym
 #
 # EDAMI lab5 - Classification
 # 
