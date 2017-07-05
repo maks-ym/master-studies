@@ -1,6 +1,6 @@
-##AISIDI Tutorials
+## AISIDI Tutorials
 
-###Microprojects of tutorials:
+### Microprojects of tutorials:
 
 - insert function for multiply-ordered list
 - ascending iterator
