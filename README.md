@@ -11,5 +11,9 @@ Not all the subjects listed here (notall subjects had labs, tutorials or project
 - edami - data mining (English)
 - eopsy - operating systems (English)
 
+### Master thesis
+- title: _Transfer learning in paraphrase detection for English and Spanish languages_
+- thesis repository: https://github.com/maks-ym/transfer-learning-in-paraphrase-detection-english-spanish
+
 --------
 _*) the language of the course is given in parentheses_
